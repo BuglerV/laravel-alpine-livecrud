@@ -1,0 +1,17 @@
+{
+    "name": "buglerv/laravel-alpine-livecrud",
+    "type": "metapackage",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Buglerv\\LaravelAlpineLivecrud\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "BuglerV"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
