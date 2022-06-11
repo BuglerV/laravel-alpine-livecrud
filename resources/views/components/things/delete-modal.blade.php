@@ -1,6 +1,6 @@
 @aware(['messages','titleColumn'])
 
-	<x-modal.confirmation-modal>
+	<x-livecrud::modal.confirmation-modal>
 		<x-slot name="title">
 			{{ $messages['delete'] }}
 		</x-slot>
@@ -11,4 +11,4 @@
 		<x-slot name="agreeJs">
 			deleteThing()
 		</x-slot>
-	</x-modal.confirmation-modal>
+	</x-livecrud::modal.confirmation-modal>

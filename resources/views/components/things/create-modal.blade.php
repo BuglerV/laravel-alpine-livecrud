@@ -1,6 +1,6 @@
 @aware(['messages'])
 
-	<x-modal.information-modal>
+	<x-livecrud::modal.information-modal>
 
 		<x-slot name="content">
 		  <div
@@ -15,4 +15,4 @@
 			<x-livecrud::things.create-buttons />
 		</x-slot>
 
-	</x-modal.information-modal>
+	</x-livecrud::modal.information-modal>
