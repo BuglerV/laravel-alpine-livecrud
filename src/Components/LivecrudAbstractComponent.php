@@ -1,10 +1,10 @@
 <?php
 
-namespace Buglerv\LaravelAlpineLivecrud;
+namespace Buglerv\Livecrud\Components;
 
 use Illuminate\View\Component;
 
-abstract class AlpineCrudAbstractComponent extends Component
+abstract class LivecrudAbstractComponent extends Component
 {
     /**
      * Название ресурса.

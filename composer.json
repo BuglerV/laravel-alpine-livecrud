@@ -4,7 +4,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Buglerv\\LaravelAlpineLivecrud\\": "src/"
+            "Buglerv\\Livecrud\\": "src/"
         }
     },
     "authors": [

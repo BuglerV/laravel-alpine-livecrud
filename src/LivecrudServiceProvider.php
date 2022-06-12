@@ -1,10 +1,11 @@
 <?php
 
-namespace Buglerv\LaravelAlpineLivecrud;
+namespace Buglerv\Livecrud;
 
 use Illuminate\Support\ServiceProvider;
+use Buglerv\Livecrud\Console\Commands\MakeLivecrudCommand;
 
-class AlpineLivecrudServiceProvider extends ServiceProvider
+class LivecrudServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -26,6 +27,9 @@ class AlpineLivecrudServiceProvider extends ServiceProvider
         $this->loads();
 		
         if ($this->app->runningInConsole()) {
+            $this->commands([
+                MakeLivecrudCommand::class,
+            ]);
         }
 		
         $this->publishes([
