@@ -1,0 +1,121 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
+class {{ class }} extends Controller
+{
+    /**
+     * Get the map of resource methods to ability names.
+     *
+     * @redefine traits method
+     *   Illuminate\Foundation\Auth\Access\AuthorizesRequests::resourceAbilityMap
+     *
+     * @return array
+     */
+    protected function resourceAbilityMap()
+    {
+        return [
+            'index' => 'viewAny',
+            'show' => 'view',
+            'store' => 'create',
+            'update' => 'update',
+            'destroy' => 'delete',
+        ];
+    }
+	
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource({{ model }}::class);
+    }
+	
+    /**
+     * Return array or rules.
+     *
+     * @return array
+     */
+    public function getRules(${{ modelVariable }} = false)
+    {
+		$rules = [];
+		
+		if(${{ modelVariable }}){
+			// $rules['title'][] = Rule::unique('{{ modelVariablePlural }}')->ignore(${{ modelVariable }});
+		}else{
+			// $rules['title'][] = Rule::unique('{{ modelVariablePlural }}');
+		}
+		
+        return $rules;
+    }
+	
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return {{ model }}::all();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $fields = $request->validate($this->getRules());
+		
+		${{ modelVariable }} = {{ model }}::create($fields);
+		
+		return $this->show(${{ modelVariable }}->id);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return {{ model }}::findOrFail($id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, {{ model }} ${{ modelVariable }})
+    {
+        $fields = $request->validate($this->getRules(${{ modelVariable }}));
+		
+		${{ modelVariable }}->update($fields);
+		
+		return $this->show(${{ modelVariable }}->id);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{ model }} ${{ modelVariable }})
+    {
+        return ${{ modelVariable }}->delete();
+    }
+}

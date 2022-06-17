@@ -1,0 +1,64 @@
+<?php
+
+namespace {{ namespace }};
+
+use Buglerv\Livecrud\Components\LivecrudAbstractComponent;
+
+class {{ class }} extends LivecrudAbstractComponent
+{
+    /**
+     * Название ресурса.
+     *
+     * @var string
+     */
+	public $thingName = '{{ modelVariable }}';
+	
+    /**
+     * Колонка базы данных, содержащая название.
+     *
+     * @var string
+     */
+	public $titleColumn = 'title';
+	
+    /**
+     * Название компонента, отображающего список вещей.
+     *
+     * @var string
+     */
+	public $listComponentName = '{{ model }}.view-list';
+	
+    /**
+     * Массив колонок базы данных.
+     *
+     * @var array
+     */
+	public $columns = [
+	// --------------------------------------------------
+	// Update this array accordanly with your database...
+	// --------------------------------------------------
+	    'column1' => 'View name 1',
+	    'column2' => 'View name 2',
+	    'column3' => 'View name 3',
+	];
+	
+    /**
+     * Массив локализованных сообщений.
+     *
+     * @var array
+     */
+	public $messages = [
+		'thing.name' => 'Thing',
+		'thing.reload' => 'Reload',
+		'thing.new' => 'New thing',
+		
+		'button.cancel' => 'Cancel',
+		'button.save' => 'Save',
+		'button.change' => 'Change',
+		'button.delete' => 'Delete',
+		
+		'nothing' => 'Nothing to show',
+		
+		'delete' => 'Deletion',
+		'delete.confirm' => 'Confirm deletion',
+	];
+}

@@ -1,0 +1,25 @@
+@aware(['messages','titleColumn'])
+
+	<x-livecrud::things.list-reload-button />
+	<x-livecrud::things.list-create-button />
+
+	<div class="mt-3">
+		<template x-for="thing in things">
+		  <div class="py-2 px-3 flex justify-between hover:bg-slate-100 border-t border-gray-200">
+			<div
+			  x-text="thing.{{ $titleColumn }}"
+			  class="mt-1"
+			></div>
+			<div>
+				<x-livecrud::things.thing-change-button />
+				<x-livecrud::things.thing-delete-button />
+			</div>
+		  </div>
+		</template>
+		<div
+		  x-show="!things.length"
+		  class="mt-2 py-2 px-3 border-t border-gray-200"
+		>
+		  {{ $messages['nothing'] }}
+		</div>
+	</div>
