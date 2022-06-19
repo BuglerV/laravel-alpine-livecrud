@@ -305,7 +305,7 @@ class MakeLivecrudCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-		if($this->type != 'Model'){
+		if($this->type != 'model'){
 			return $rootNamespace.$this->namespaces[$this->type];
 		}
 		
