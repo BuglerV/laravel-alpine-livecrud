@@ -105,6 +105,8 @@ class MakeLivecrudCommand extends GeneratorCommand
 		$this->makeDirectory($pathTo);
 		
 		$this->files->copy($pathFrom,$pathTo);
+		
+		$this->info("View '{$name}.view-{$view}' created successfully.");
     }
 	
     /**
@@ -117,7 +119,7 @@ class MakeLivecrudCommand extends GeneratorCommand
         parent::handle();
 		
 		$views = $this->choice(
-			'Wich view you prefer to publish?',
+			'Wich view do you prefer to publish?',
 			['all', 'list', 'grid', 'none'],
 			0,
 			$maxAttempts = null,
