@@ -115,9 +115,7 @@ class MakeLivecrudCommand extends GeneratorCommand
      * @return void
      */
     protected function createComponent()
-    {
-        parent::handle();
-		
+    {	
 		$views = $this->choice(
 			'Wich view do you prefer to publish?',
 			['all', 'list', 'grid', 'none'],
@@ -125,6 +123,8 @@ class MakeLivecrudCommand extends GeneratorCommand
 			$maxAttempts = null,
 			$allowMultipleSelections = true
 		);
+	    
+	    	parent::handle();
 		
 		if(in_array('none',$views)){
 			return;
@@ -281,7 +281,7 @@ class MakeLivecrudCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return $this->resolveStubPath("/stubs/livecrud/{$type}.stub");
+        return $this->resolveStubPath("/stubs/livecrud/{$this->type}.stub");
     }
 
     /**
