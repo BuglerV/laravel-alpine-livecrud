@@ -1,6 +1,6 @@
 {
     "name": "buglerv/laravel-alpine-livecrud",
-    "type": "metapackage",
+    "type": "package",
     "license": "MIT",
     "autoload": {
         "psr-4": {
